@@ -23,4 +23,13 @@ $injector->define('Mustache_Engine', [
         ]),
     ],
 ]);
+
+$injector->define('FrameworkTest\Page\FilePageReader', [
+    ':pageFolder' => __DIR__ . '/../pages',
+]);
+
+$injector->alias('FrameworkTest\Page\PageReader', 'FrameworkTest\Page\FilePageReader');
+$injector->share('FrameworkTest\Page\FilePageReader');
+
+
 return $injector;
