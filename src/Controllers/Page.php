@@ -4,7 +4,7 @@ namespace FrameworkTest\Controllers;
 
 
 use Http\Response;
-use FrameworkTest\Template\Renderer;
+use FrameworkTest\Template\FrontendRenderer;
 use FrameworkTest\Page\PageReader;
 use FrameworkTest\Page\InvalidPageException;
 
@@ -12,16 +12,16 @@ class Page
 {
     private $pageReader;
     private $response;
-    private $renderer;
+    private $frontendRenderer;
     
     public function __construct(
         PageReader $pageReader,
         Response $response,
-        Renderer $renderer
+        FrontendRenderer $frontendRenderer
     ) {
         $this->pageReader = $pageReader;
         $this->response = $response;
-        $this->renderer = $renderer;
+        $this->frontendRenderer = $frontendRenderer;
     }
 
     public function show($params)
@@ -33,7 +33,7 @@ class Page
             $this->response->setStatusCode(404);
             return $this->response->setContent('404 - Page not found');
         }
-        $html = $this->renderer->render('Page', $data);
+        $html = $this->frontendRenderer->render('Page', $data);
         $this->response->setContent($html);
     }
 }

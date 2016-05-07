@@ -4,31 +4,31 @@ namespace FrameworkTest\Controllers;
 
 use Http\Request;
 use Http\Response;
-use FrameworkTest\Template\Renderer;
+use FrameworkTest\Template\FrontendRenderer;
 
 class Homepage
 {
     private $request;
     private $response;
-    private $renderer;
+    private $frontendRenderer;
 
 
     public function __construct(
         Request $request,
         Response $response,
-        Renderer $renderer
+        FrontendRenderer $frontendRenderer
     ) {
         $this->request = $request;
         $this->response = $response;
-        $this->renderer = $renderer;
+        $this->frontendRenderer = $frontendRenderer;
     }
 
     public function show()
     {
         $data = [
-            'name' => $this->request->getParameter('name', 'stranger')
+            'name' => $this->request->getParameter('name', 'stranger'),
         ];
-        $html = $this->renderer->render('Homepage', $data);
+        $html = $this->frontendRenderer->render('Homepage', $data);
         $this->response->setContent($html);
     }
 }
