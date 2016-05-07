@@ -1,0 +1,25 @@
+{
+    "name": "juliankolbe/framework1",
+    "description": "first test of a custom framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julian Kolbe",
+            "email": "juliankolbe@live.com"
+        }
+    ],
+    "require": {
+        "patricklouys/http": "^1.3",
+        "nikic/fast-route": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FrameworkTest\\": "src/"
+        }
+    },
+    "require-dev": {
+        "filp/whoops": "^2.1",
+        "symfony/var-dumper": "^3.0"
+    }
+}
